@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 18:08:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/02 14:22:53 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/10/14 20:35:43 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/10/14 20:37:41 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-int	main(int argc, char **argv)
+Zombie*	zombieHorde(int N, std::string name)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
-		while (i < argc)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				std::cout << (char)std::toupper(argv[i][j]);
-				j++;
-			}
-			i++;
-		}
-	}
-	std::cout << std::endl;
-	return (0);
+	Zombie*	zombies = new Zombie[N];
+	for (int i = 0; i < N; i++)
+		zombies[i].set_name(name);
+	return (zombies);
 }

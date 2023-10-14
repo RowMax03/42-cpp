@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 18:08:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/02 14:22:53 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/10/14 22:32:55 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/10/14 22:46:10 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Weapon.hpp"
 
-int	main(int argc, char **argv)
+Weapon::Weapon(std::string type) : _type(type)
 {
-	int	i;
-	int	j;
+	return ;
+}
 
-	i = 1;
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
-		while (i < argc)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				std::cout << (char)std::toupper(argv[i][j]);
-				j++;
-			}
-			i++;
-		}
-	}
-	std::cout << std::endl;
-	return (0);
+Weapon::~Weapon(void)
+{
+	return ;
+}
+
+void	Weapon::setType(std::string type)
+{
+	this->_type = type;
+}
+
+std::string const &Weapon::getType(void)
+{
+	return (this->_type);
 }

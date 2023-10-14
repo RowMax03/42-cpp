@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 18:08:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/02 14:22:53 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/10/14 22:34:25 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/10/14 22:37:29 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int	main(int argc, char **argv)
+# include <iostream>
+# include <string>
+
+class Weapon
 {
-	int	i;
-	int	j;
+	public:
+		Weapon(std::string _type);
+		~Weapon(void);
+		void	setType(std::string _type);
+		std::string const &getType(void);
+	private:
+		std::string _type;
+};
 
-	i = 1;
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
-		while (i < argc)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				std::cout << (char)std::toupper(argv[i][j]);
-				j++;
-			}
-			i++;
-		}
-	}
-	std::cout << std::endl;
-	return (0);
-}
+#endif

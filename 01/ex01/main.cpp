@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 18:08:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/02 14:22:53 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/10/14 20:38:13 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/10/14 22:02:59 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
+	Zombie*		zombies;
+	size_t		n_zombies = 5;
+	
+	zombies = zombieHorde(n_zombies, "BabaBoy");
+	for (size_t i = 0; i < n_zombies; i++)
 	{
-		while (i < argc)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				std::cout << (char)std::toupper(argv[i][j]);
-				j++;
-			}
-			i++;
-		}
+		std::cout << "Zombie " << i << ": ";
+		zombies[i].announce();
 	}
-	std::cout << std::endl;
 	return (0);
 }
