@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 18:26:18 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/01 20:03:44 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:15:03 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	phonebook::add(void)
 	this->contact_index++;
 	if (contact_count < 8)
 		this->contact_count++;
-	else if (contact_index == 8)
+	if (contact_index == 8)
 		this->contact_index = 0;
 	return ;
 }

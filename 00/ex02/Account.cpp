@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 20:08:58 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/01 21:34:36 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:15:43 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	Account::makeDeposit(int deposit)
 		this->_amount + deposit << ";nb_deposits:" <<
 		this->_nbDeposits + 1 <<
 		std::endl;
+	this->_amount += deposit;
+	this->_nbDeposits++;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
@@ -109,6 +111,8 @@ bool	Account::makeWithdrawal(int withdrawal)
 		this->_amount - withdrawal << ";nb_withdrawals:" <<
 		this->_nbWithdrawals + 1 <<
 		std::endl;
+	this->_amount -= withdrawal;
+	this->_nbWithdrawals++;
 	return (true);
 }
 
