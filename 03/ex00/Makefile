@@ -1,12 +1,12 @@
-NAME = Harl_2.0
+NAME = fixed
 OBJS = $(SRCS:.cpp=.o)
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I include
 
-SRC_FILES = Harl.cpp
+SRC_FILES = Fixed.cpp
 SRCS = $(addprefix src/, $(SRC_FILES)) main.cpp
 
-INCLUDE_FILES = Harl.hpp
+INCLUDE_FILES = Fixed.hpp
 INCLUDES = $(addprefix include/, $(INCLUDE_FILES))
 
 all: $(NAME)
