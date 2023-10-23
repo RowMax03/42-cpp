@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:32:21 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/20 17:25:12 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:44:50 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ class	Fixed
 		~Fixed(void);
 		Fixed & operator = (const Fixed &fixed);
 		friend std::ostream & operator << (std::ostream& output, const Fixed &fixed);
+		friend bool & operator > (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool & operator < (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool & operator >= (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool & operator <= (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool & operator == (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool & operator != (const Fixed &fixed1, const Fixed &fixed2);
+		friend Fixed & operator + (const Fixed &fixed1, const Fixed &fixed2);
+		friend Fixed & operator - (const Fixed &fixed1, const Fixed &fixed2);
+		friend Fixed & operator * (const Fixed &fixed1, const Fixed &fixed2);
+		friend Fixed & operator / (const Fixed &fixed1, const Fixed &fixed2);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;

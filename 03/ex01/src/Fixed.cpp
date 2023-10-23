@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:32:19 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/20 13:13:45 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:48:43 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,51 @@ std::ostream &operator << (std::ostream &output, const Fixed &fixed)
 {
 	output << fixed.toFloat();
 	return (output);
+}
+
+bool &operator > (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() > fixed2.getRawBits());
+}
+
+bool &operator < (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() < fixed2.getRawBits());
+}
+
+bool &operator >= (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() >= fixed2.getRawBits());
+}
+
+bool &operator <= (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() <= fixed2.getRawBits());
+}
+
+bool &operator == (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() == fixed2.getRawBits());
+}
+
+bool &operator != (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() != fixed2.getRawBits());
+}
+
+Fixed &operator + (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() + fixed2.getRawBits());
+}
+
+Fixed &operator - (const Fixed &fixed1, const Fixed &fixed2)
+{
+	return (fixed1.getRawBits() - fixed2.getRawBits());
+}
+
+Fixed &operator * (const Fixed &fixed1, const Fixed &fixed2)
+{
+	
 }
 
 int		Fixed::getRawBits(void) const
