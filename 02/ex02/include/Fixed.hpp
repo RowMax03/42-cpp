@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:32:21 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/23 13:44:50 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:02:53 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,24 @@ class	Fixed
 		~Fixed(void);
 		Fixed & operator = (const Fixed &fixed);
 		friend std::ostream & operator << (std::ostream& output, const Fixed &fixed);
-		friend bool & operator > (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool & operator < (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool & operator >= (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool & operator <= (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool & operator == (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool & operator != (const Fixed &fixed1, const Fixed &fixed2);
-		friend Fixed & operator + (const Fixed &fixed1, const Fixed &fixed2);
-		friend Fixed & operator - (const Fixed &fixed1, const Fixed &fixed2);
-		friend Fixed & operator * (const Fixed &fixed1, const Fixed &fixed2);
-		friend Fixed & operator / (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator > (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator < (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator >= (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator <= (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator == (const Fixed &fixed1, const Fixed &fixed2);
+		friend bool operator != (const Fixed &fixed1, const Fixed &fixed2);
+		friend Fixed & operator+ (Fixed &fixed1, Fixed &fixed2);
+		friend Fixed & operator- (Fixed &fixed1, Fixed &fixed2);
+		Fixed operator* (const Fixed &fixed2);
+		Fixed operator/ (const Fixed &fixed2);
+		friend Fixed & operator++ (Fixed &fixed);
+		friend Fixed & operator-- (Fixed &fixed);
+		friend Fixed operator++ (Fixed &fixed, int);
+		friend Fixed operator-- (Fixed &fixed, int);
+		static Fixed & min(Fixed &fixed1, Fixed &fixed2);
+		static Fixed & max(Fixed &fixed1, Fixed &fixed2);
+		static const Fixed & min(const Fixed &fixed1, const Fixed &fixed2);
+		static const Fixed & max(const Fixed &fixed1, const Fixed &fixed2);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
@@ -46,3 +54,4 @@ class	Fixed
 };
 
 #endif
+ 
