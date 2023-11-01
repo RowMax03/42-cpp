@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:32:19 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/24 18:24:40 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:20:49 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,60 +55,60 @@ std::ostream &operator << (std::ostream &output, const Fixed &fixed)
 	return (output);
 }
 
-bool operator > (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator > (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() > fixed2.getRawBits());
+	return (this->getRawBits() > fixed2.getRawBits());
 }
 
-bool operator < (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator < (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() < fixed2.getRawBits());
+	return (this->getRawBits() < fixed2.getRawBits());
 }
 
-bool operator >= (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator >= (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() >= fixed2.getRawBits());
+	return (this->getRawBits() >= fixed2.getRawBits());
 }
 
-bool operator <= (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator <= (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() <= fixed2.getRawBits());
+	return (this->getRawBits() <= fixed2.getRawBits());
 }
 
-bool operator == (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator == (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() == fixed2.getRawBits());
+	return (this->getRawBits() == fixed2.getRawBits());
 }
 
-bool operator != (const Fixed &fixed1, const Fixed &fixed2)
+bool Fixed::operator != (const Fixed &fixed2)
 {
-	return (fixed1.getRawBits() != fixed2.getRawBits());
+	return (this->getRawBits() != fixed2.getRawBits());
 }
 
-Fixed & operator ++ (Fixed &fixed)
+Fixed & Fixed::operator ++ ()
 {
-	fixed._fixedPointValue++;
-	return (fixed);
+	this->_fixedPointValue++;
+	return (*this);
 }
 
-Fixed & operator -- (Fixed &fixed)
+Fixed & Fixed::operator -- ()
 {
-	fixed._fixedPointValue--;
-	return (fixed);
+	this->_fixedPointValue--;
+	return (*this);
 }
 
-Fixed operator ++ (Fixed &fixed, int)
+Fixed Fixed::operator ++ (int)
 {
-	Fixed fix = fixed;
-	fix._fixedPointValue++;
+	Fixed fix(*this);
+	this->_fixedPointValue++;
 	return (fix);
 }
 
-Fixed operator -- (Fixed &fixed, int)
+Fixed Fixed::operator -- (int)
 {
-	Fixed fix = fixed;
-	fix._fixedPointValue--;
-	return (fix);
+	Fixed fix(*this);
+	this->_fixedPointValue--;
+	return (*this);
 }
 
 Fixed Fixed::operator+ (const Fixed &fixed2)

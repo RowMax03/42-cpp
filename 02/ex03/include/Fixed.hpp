@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:32:21 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/24 18:24:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:21:33 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,20 @@ class	Fixed
 		Fixed(const Fixed &fixed);
 		~Fixed(void);
 		Fixed & operator = (const Fixed &fixed);
-		friend std::ostream & operator << (std::ostream& output, const Fixed &fixed);
-		friend bool operator > (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool operator < (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool operator >= (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool operator <= (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool operator == (const Fixed &fixed1, const Fixed &fixed2);
-		friend bool operator != (const Fixed &fixed1, const Fixed &fixed2);
+		bool operator > (const Fixed &fixed2);
+		bool operator < (const Fixed &fixed2);
+		bool operator >= (const Fixed &fixed2);
+		bool operator <= (const Fixed &fixed2);
+		bool operator == (const Fixed &fixed2);
+		bool operator != (const Fixed &fixed2);
 		Fixed operator+ (const Fixed &fixed2);
 		Fixed operator- (const Fixed &fixed2);
 		Fixed operator* (const Fixed &fixed2);
 		Fixed operator/ (const Fixed &fixed2);
-		friend Fixed & operator++ (Fixed &fixed);
-		friend Fixed & operator-- (Fixed &fixed);
-		friend Fixed operator++ (Fixed &fixed, int);
-		friend Fixed operator-- (Fixed &fixed, int);
+		Fixed & operator++ ();
+		Fixed & operator-- ();
+		Fixed operator++ (int);
+		Fixed operator-- (int);
 		static Fixed & min(Fixed &fixed1, Fixed &fixed2);
 		static Fixed & max(Fixed &fixed1, Fixed &fixed2);
 		static const Fixed & min(const Fixed &fixed1, const Fixed &fixed2);
@@ -52,6 +51,8 @@ class	Fixed
 		int	_fixedPointValue;
 		const static int _fractionalBits = 8;
 };
+
+std::ostream & operator << (std::ostream& output, const Fixed &fixed);
 
 #endif
  
