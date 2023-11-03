@@ -1,4 +1,4 @@
-NAME = FragTrap
+NAME = DiamondTrap
 OBJS = $(SRCS:.cpp=.o)
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -I include
