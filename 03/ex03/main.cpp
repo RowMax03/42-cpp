@@ -6,31 +6,23 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:44:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/11/03 15:52:09 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:33:27 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-int main()
-{
-	FragTrap fragTrap("Barack Obama");
-	FragTrap fragTrap2(fragTrap);
-	FragTrap fragTrap3("George W Bush");
+int main() {
+	DiamondTrap dia("dia");
+	DiamondTrap dia2(dia);
+	DiamondTrap dia3("mond");
 
-	fragTrap.attack("Isis");
-	fragTrap3.highFiveGuys();
-	fragTrap.takeDamage(2);
-	fragTrap.beRepaired(2);
-	fragTrap.attack("Republicans");
-	fragTrap.attack("Socialists");
-	fragTrap.attack("Some random guy");
-	fragTrap.attack("Some random 3 World Country");
-	fragTrap.attack("Republicans");
-	fragTrap.attack("George W Bush");
-	fragTrap.attack("Republicans");
-	fragTrap.attack("Republicans");
-	fragTrap.beRepaired(2);
-	fragTrap.attack("Republicans");
-	fragTrap2.attack("Republicans");
+	dia.whoAmI();
+	dia2.whoAmI();
+	dia3 = dia;
+	dia3.whoAmI();
+
+	dia.attack( "the air" );
+	dia.takeDamage( 10 );
+	dia.beRepaired( 10 );
 }
