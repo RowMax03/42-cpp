@@ -1,4 +1,4 @@
-NAME = Zombie
+NAME = ZombieHorde
 SRCS = Zombie.cpp zombieHorde.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = clang++

@@ -6,12 +6,12 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:12:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/14 21:59:00 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:54:34 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef ZOMBIES_H
+# define ZOMBIES_H
 
 #include <iostream>
 #include <string>

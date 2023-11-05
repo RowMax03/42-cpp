@@ -6,13 +6,13 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:38:13 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/14 22:02:59 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:00:26 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Zombies.hpp"
 
-int	main(void)
+int	main()
 {
 	Zombie*		zombies;
 	size_t		n_zombies = 5;
@@ -23,5 +23,6 @@ int	main(void)
 		std::cout << "Zombie " << i << ": ";
 		zombies[i].announce();
 	}
+	delete [] zombies;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:56:37 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/16 15:41:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:08:33 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char	**argv)
 	new_file.append(".replace");
 	std::ifstream input(argv[1]);
 	if (!input)
-		return (std::cout << "Error: File does not exist." << std::endl, 1);
+		return (std::cout << "Error: File does not exist or does not have the correct acces rights." << std::endl, 1);
 	std::ofstream output(new_file);
 	if (!output.is_open())
 		return (std::cout << "Error: Opening ouput file" << std::endl, 1);

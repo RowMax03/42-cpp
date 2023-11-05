@@ -6,11 +6,11 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 20:17:57 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/14 20:27:27 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:54:50 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Zombies.hpp"
 
 Zombie::Zombie(void)
 {
