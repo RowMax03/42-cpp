@@ -5,20 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 11:26:24 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/11/06 21:46:32 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/11/07 05:47:55 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/11/07 05:52:28 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Include.hpp"
 
-int main( void ) {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+int main() {
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+	// system("leaks Interface");
 	return 0;
 }

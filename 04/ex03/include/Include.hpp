@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Include.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 11:26:24 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/11/06 21:46:32 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/11/07 05:48:35 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/11/07 05:48:51 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#pragma once
 
-int main( void ) {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+#include <string>
+#include <iostream>
+#include "AMateria.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"

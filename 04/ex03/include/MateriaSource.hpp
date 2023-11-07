@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 11:26:24 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/11/06 21:46:32 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/11/07 05:29:26 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/11/07 05:34:44 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#pragma once
 
-int main( void ) {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
+
+class MateriaSource : public IMateriaSource
+{
+	private:
+		int _count;
+		AMateria* _materia[4];
+	public:
+		MateriaSource();
+		MateriaSource(MateriaSource const & src);
+		virtual ~MateriaSource();
+		MateriaSource & operator=(MateriaSource const & src);
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
+};

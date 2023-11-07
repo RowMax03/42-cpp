@@ -5,20 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 11:26:24 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/11/06 21:46:32 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/11/07 00:05:42 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/11/07 03:31:40 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-int main( void ) {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+int main()
+{
+	// const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	// meta->makeSound();
+	
+	// delete meta;
+	delete j;
+	delete i;
+	// system("leaks I_dont_want_to_set_the_world_on_fire");
 	return 0;
 }
