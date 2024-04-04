@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:21:30 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:11 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:03:58 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	system("leaks Bureaucrat");
+	// system("leaks Bureaucrat");
 }

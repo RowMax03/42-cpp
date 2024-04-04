@@ -67,6 +67,7 @@
 		"__verbose_abort": "cpp",
 		"charconv": "cpp",
 		"clocale": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"__functional_03": "cpp"
 	}
 }

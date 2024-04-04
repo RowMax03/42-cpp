@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:34:43 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/03/20 12:12:27 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:39:09 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute)
 }
 
 Form::~Form() {}
+
+Form::Form(const Form &other)
+	: name(other.name), isSigned(other.isSigned), gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute) {}
+
+Form& Form::operator=(const Form& other) {
+	if (this != &other) 
+		isSigned = other.isSigned;
+	return *this;
+}
 
 std::string Form::getName() const { return name; }
 bool Form::getIsSigned() const { return isSigned; }

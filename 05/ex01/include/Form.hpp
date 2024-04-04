@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:32:15 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/01/02 19:47:58 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:35:41 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ private:
 public:
 	Form(std::string name, int gradeToSign, int gradeToExecute);
 	~Form();
+	Form(const Form &other);
+	Form& operator=(const Form &other);
 
 	std::string getName() const;
 	bool getIsSigned() const;
