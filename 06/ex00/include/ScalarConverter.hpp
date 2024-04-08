@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:36:44 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/04/08 11:18:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:07:35 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 #include <iostream>
 #include <string>
-#include <limits>
-#include <cctype>
 #include <sstream>
+#include <cctype>
+#include <limits>
+#include <iomanip>
+#include <cstdlib>
+#include <climits>
+#include <cfloat>
 
 class ScalarConverter
 {
