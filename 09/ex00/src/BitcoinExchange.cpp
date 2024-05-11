@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:54 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 23:47:18 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/12 00:01:29 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,26 @@ void BitcoinExchange::getBalanceForInput(std::ifstream &file)
 {
 	std::string line;
 	float f_value;
+	std::string date;
+
 	std::getline(file, line);
 	if (line != "date | value")
 		printError(ERR_HEADER);
 	while (std::getline(file, line))
 	{
-		std::string date = line.substr(0, 10);
-		if (line.length() >= 14)
+		bool valid = true;
+		if (line.length() >= 10)
+			date = line.substr(0, 10);
+		else
+			date = "[empty]";
+		if (line.length() >= 14 && line[11] == '|')
 		{
 			std::string value = line.substr(13);
 			f_value = std::stof(value);
 		}
 		else
-			f_value = std::nanf("");
-		displayBalance(date, f_value);
+			valid = false;
+		displayBalance(date, f_value, valid);
 	}
 }
 
@@ -135,15 +141,15 @@ float BitcoinExchange::getBalance(std::string date)
 	return _data.lower_bound(date)->second;
 }
 
-void BitcoinExchange::displayBalance(std::string date, float &value)
+void BitcoinExchange::displayBalance(std::string date, float &value, bool valid)
 {
 	float balance = getBalance(date);
-	if (std::isnan(value) || !validDate(date))
+	if (!valid || !validDate(date))
 		printError("Error: bad input => " + date);
 	else if (value > 1000)
 		printError(ERR_TO_LARGE);
 	else if (value < 0)
 		printError(ERR_NEG_VAL);
 	else
-		std::cout << date << " => " << balance * value << std::endl;
+		std::cout << date << " => " << value << " = " << balance * value << std::endl;
 }

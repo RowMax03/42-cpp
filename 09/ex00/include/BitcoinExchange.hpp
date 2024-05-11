@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 23:47:39 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:57:05 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ private:
 	bool validDate(std::string date);
 	bool validExchangRate(std::string& str);
 	float getBalance(std::string date);
-	void displayBalance(std::string date, float &value);
+	void displayBalance(std::string date, float &value, bool valid);
 	void getBalanceForInput(std::ifstream &file);
 };
