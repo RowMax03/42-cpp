@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:54 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 23:15:53 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:47:18 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int BitcoinExchange::getBalanceOverTime(std::ifstream &file)
 {
 	if (readAndValidateData())
 		return 1;
-	std::map<std::string, float> input = parseInput(file);
-	for (std::map<std::string, float>::iterator it = input.begin(); it != input.end(); it++)
-		displayBalance(it->first, it->second);
+	getBalanceForInput(file);
 	return 0;
 }
 
@@ -67,26 +65,30 @@ int BitcoinExchange::readAndValidateData()
 	return 0;
 }
 
-std::map<std::string, float> BitcoinExchange::parseInput(std::ifstream &file)
+void BitcoinExchange::getBalanceForInput(std::ifstream &file)
 {
-	std::map<std::string, float> data;
 	std::string line;
+	float f_value;
 	std::getline(file, line);
 	if (line != "date | value")
 		printError(ERR_HEADER);
 	while (std::getline(file, line))
 	{
 		std::string date = line.substr(0, 10);
-		std::string value = line.substr(13);
-		data[date] = std::stof(value);
+		if (line.length() >= 14)
+		{
+			std::string value = line.substr(13);
+			f_value = std::stof(value);
+		}
+		else
+			f_value = std::nanf("");
+		displayBalance(date, f_value);
 	}
-	return data;
-
 }
 
 bool BitcoinExchange::validDate(std::string date)
 {
-	std::cout << date << std::endl;
+	// std::cout << date << std::endl;
 	if (date.length() != 10)
 		return false;
 	if (date[4] != '-' || date[7] != '-')
@@ -111,7 +113,6 @@ bool BitcoinExchange::validDate(std::string date)
 }
 
 bool BitcoinExchange::validExchangRate(std::string& str) {
-	std::cout << str << std::endl;
 	try {
 		std::stof(str);
 		return true;
@@ -124,6 +125,13 @@ float BitcoinExchange::getBalance(std::string date)
 {
 	if (_data.find(date) != _data.end())
 		return _data[date];
+
+	std::map<std::string, float>::iterator it = _data.upper_bound(date);
+	if (it != _data.begin())
+	{
+		it--;
+		return it->second;
+	}
 	return _data.lower_bound(date)->second;
 }
 
@@ -136,5 +144,6 @@ void BitcoinExchange::displayBalance(std::string date, float &value)
 		printError(ERR_TO_LARGE);
 	else if (value < 0)
 		printError(ERR_NEG_VAL);
-	std::cout << date << " => " << balance << std::endl;
+	else
+		std::cout << date << " => " << balance * value << std::endl;
 }
