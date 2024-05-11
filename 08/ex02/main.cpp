@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:30:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 18:24:46 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 18:33:38 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,21 @@ while (it != ite)
 	++it;
 }
 std::stack<int> s(mstack);
+s.push(42);
+std::cout << "---- swap tests ----" << std::endl;
 std::cout << "mstack Size: " << mstack.size() << std::endl;
 std::cout << "Copy Stack Size: " << s.size() << std::endl;
+
+mstack.swap(s);
+it = mstack.begin();
+ite = mstack.end();
+while (it != ite)
+{
+	std::cout << *it << std::endl;
+	++it;
+}
+// it = s.begin();
+// ite = s.end();
+
 return 0;
 }
