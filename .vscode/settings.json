@@ -73,6 +73,7 @@
 		"map": "cpp",
 		"filesystem": "cpp",
 		"*.tpp": "cpp",
-		"set": "cpp"
+		"set": "cpp",
+		"list": "cpp"
 	}
 }
