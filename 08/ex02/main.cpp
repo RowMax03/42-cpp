@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 17:30:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 17:54:52 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 18:24:46 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,18 @@ int main2();
 
 int main()
 {
-std::list<int> mstack;
-mstack.push_back(5);
-mstack.push_back(17);
-std::cout << mstack.back() << std::endl;
-mstack.pop_back();
-std::cout << mstack.size() << std::endl;
-mstack.push_back(3);
-mstack.push_back(5);
-mstack.push_back(737);
-//[...]
-mstack.push_back(0);
-std::list<int>::iterator it = mstack.begin();
-std::list<int>::iterator ite = mstack.end();
+std::list<int> lstack;
+lstack.push_back(5);
+lstack.push_back(17);
+std::cout << lstack.back() << std::endl;
+lstack.pop_back();
+std::cout << lstack.size() << std::endl;
+lstack.push_back(3);
+lstack.push_back(5);
+lstack.push_back(737);
+lstack.push_back(0);
+std::list<int>::iterator it = lstack.begin();
+std::list<int>::iterator ite = lstack.end();
 ++it;
 --it;
 while (it != ite)
@@ -39,7 +38,9 @@ while (it != ite)
 	std::cout << *it << std::endl;
 	++it;
 }
-std::list<int> s(mstack);
+std::cout << "lstack size: " << lstack.size() << std::endl;
+std::list<int> s(lstack);
+std::cout << "Copy list size: " << s.size() << std::endl;
 std::cout << "-^--list impl--^-" << std::endl;
 std::cout << "-----------------" << std::endl;
 std::cout << "-v-mutantstack-v-" << std::endl;
@@ -69,5 +70,7 @@ while (it != ite)
 	++it;
 }
 std::stack<int> s(mstack);
+std::cout << "mstack Size: " << mstack.size() << std::endl;
+std::cout << "Copy Stack Size: " << s.size() << std::endl;
 return 0;
 }
