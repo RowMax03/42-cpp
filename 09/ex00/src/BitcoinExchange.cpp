@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:54 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 20:29:46 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:15:53 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,54 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return *this;
 }
 
-void BitcoinExchange::readAndValidateData()
+int BitcoinExchange::getBalanceOverTime(std::ifstream &file)
+{
+	if (readAndValidateData())
+		return 1;
+	std::map<std::string, float> input = parseInput(file);
+	for (std::map<std::string, float>::iterator it = input.begin(); it != input.end(); it++)
+		displayBalance(it->first, it->second);
+	return 0;
+}
+
+int BitcoinExchange::readAndValidateData()
 {
 	std::ifstream file("data.csv");
 	if (!file.is_open())
-	{
-		std::cerr << "Error: Could not open file" << std::endl;
-		return;
-	}
+		printError(ERR_FILE);
 	std::string line;
 	std::getline(file, line);
 	if (line != "date,exchange_rate")
-	{
-		std::cerr << "Error: Invalid header" << std::endl;
-		return;
-	}
+		return printError(ERR_HEADER);
 	while (std::getline(file, line))
 	{
 		std::string date = line.substr(0, 10);
 		std::string value = line.substr(11);
-		if (!validDate(date) || !validExchangRate(value))
-		{
-			std::cerr << "Error: Invalid data" << std::endl;
-			return;
-		}
+		if (!validDate(date))
+			return printError(ERR_INVALID_DATE);
+		if (!validExchangRate(value))
+			return printError(ERR_INVALID_EXCHANGE_RATE);
 		_data[date] = std::stof(value);
 	}
 	file.close();
+	return 0;
+}
+
+std::map<std::string, float> BitcoinExchange::parseInput(std::ifstream &file)
+{
+	std::map<std::string, float> data;
+	std::string line;
+	std::getline(file, line);
+	if (line != "date | value")
+		printError(ERR_HEADER);
+	while (std::getline(file, line))
+	{
+		std::string date = line.substr(0, 10);
+		std::string value = line.substr(13);
+		data[date] = std::stof(value);
+	}
+	return data;
+
 }
 
 bool BitcoinExchange::validDate(std::string date)
@@ -104,4 +125,16 @@ float BitcoinExchange::getBalance(std::string date)
 	if (_data.find(date) != _data.end())
 		return _data[date];
 	return _data.lower_bound(date)->second;
+}
+
+void BitcoinExchange::displayBalance(std::string date, float &value)
+{
+	float balance = getBalance(date);
+	if (std::isnan(value) || !validDate(date))
+		printError("Error: bad input => " + date);
+	else if (value > 1000)
+		printError(ERR_TO_LARGE);
+	else if (value < 0)
+		printError(ERR_NEG_VAL);
+	std::cout << date << " => " << balance << std::endl;
 }

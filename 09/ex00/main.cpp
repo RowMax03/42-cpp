@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:29:46 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 20:49:30 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:15:35 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ int	main(int argc, char** argv)
 	if (!file.is_open())
 		return (printError(ERR_FILE));
 	BitcoinExchange exchange;
-	exchange.readAndValidateData();
+	exchange.getBalanceOverTime(file);
+	file.close();
+	return 0;
 }
