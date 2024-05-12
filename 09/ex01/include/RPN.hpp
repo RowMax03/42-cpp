@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:20:25 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/12 16:03:24 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:51:13 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 #include <sstream>
 #include <string>
 
-#define ERR_SINGLE_DIGIT = "Error: The numbers passed have to be single digit (subject req)"
+#define ERR_USAGE "Error: Usage: ./RPN \"1 1 +\""
+#define ERR_SINGLE_DIGIT "Error: The numbers passed have to be single digit (subject req)"
+#define ERR_UNSUPORTED_TOKEN "Error: Token unsuported, only \"+ - / *\" are allowed"
+#define ERR_STACK_EMPTY "Error: Stack went empty when trying to performe operation, check input"
 
 int printError(std::string error);
 
