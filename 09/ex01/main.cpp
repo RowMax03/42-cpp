@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:19:06 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/12 16:54:29 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:08:52 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int printError(std::string error)
 {
-	std::cerr << error << std::endl;
+	std::cout << error << std::endl;
 	return 1;
 }
 
