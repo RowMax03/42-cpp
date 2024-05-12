@@ -74,6 +74,7 @@
 		"filesystem": "cpp",
 		"*.tpp": "cpp",
 		"set": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"queue": "cpp"
 	}
 }
