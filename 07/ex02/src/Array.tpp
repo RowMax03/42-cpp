@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:01:10 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/10 15:32:21 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:52:37 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ template <typename T>
 const char* Array<T>::OutOfLimits::what() const throw() {return ("Out of limits");}
 
 template <typename T>
-Array<T>::Array() : _array(nullptr), _size(0) {}
+Array<T>::Array() : _array(NULL), _size(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {}

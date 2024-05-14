@@ -6,12 +6,14 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:16 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/10 15:27:41 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:52:21 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 template <typename T>
 class Array
