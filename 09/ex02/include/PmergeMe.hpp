@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:30 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/13 17:10:22 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:11:04 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <algorithm>
 
+void printVector(std::vector<int> const &input, std::string const &prefix);
 class PmergeMe
 {
 public:

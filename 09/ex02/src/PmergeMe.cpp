@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/13 17:15:33 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:12:36 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,10 @@ void PmergeMe::mergePairs()
 		else
 		{
 			if (std::find(jacobSeq.begin(), jacobSeq.end(), iterator) != jacobSeq.end())
-			{
 				iterator++;
-			}
 			insertPos = iterator;
 			last = false;
 		}
-
 		int item = pend[insertPos];
 		int insertionPoint = binarySearch(_sorted, item);
 		_sorted.insert(_sorted.begin() + insertionPoint, item);
@@ -112,12 +109,9 @@ void PmergeMe::mergePairs()
 		int insertPos = binarySearch(_sorted, _straggler);
 		_sorted.insert(_sorted.begin() + insertPos, _straggler);
 	}
-
-	for (size_t i = 0; i < _sorted.size(); i++)
-	{
-		std::cout << _sorted[i] << " ";
-	}
+	printVector(_sorted, "After: ");
 }
+
 std::vector<int> PmergeMe::buildJacobInsertionSequence(int arrayLen)
 {
 	std::vector<int> endSequence;

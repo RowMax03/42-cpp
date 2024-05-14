@@ -6,13 +6,25 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:33 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 14:08:52 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:12:28 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 #include <sstream>
+
+void printVector(std::vector<int> const &input, std::string const &prefix)
+{
+	std::cout << prefix;
+	for (size_t i = 0; i < input.size(); ++i) {
+		std::cout << input[i];
+		if (i + 1 < input.size()) {
+			std::cout << " ";
+		}
+	}
+	std::cout << std::endl;
+}
 
 int main(int argc, char **argv)
 {
@@ -27,7 +39,7 @@ int main(int argc, char **argv)
 			return 1;
 		}
 	}
-
+	printVector(input, "Before: ");
 	PmergeMe pmm;
 	pmm.sort(input);
 	return 0;
