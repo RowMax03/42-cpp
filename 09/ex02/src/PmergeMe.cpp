@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 21:12:36 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:28:02 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,23 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
 	return *this;
 }
 
-void PmergeMe::sort(std::vector<int> const &input)
-{
-	makePairs(input);
-	mergePairs();
-}
 
 
-void PmergeMe::makePairs(std::vector<int> const &input)
-{
-	for (size_t i = 0; i < input.size(); i += 2)
-	{
-		if (i + 1 < input.size())
-		{
-			// Compare the two values and create a pair with the larger value first and store in the pq
-			_data.push(std::make_pair(input[i] < input[i + 1] ? input[i + 1] : input[i],
-				input[i] < input[i + 1] ? input[i] : input[i + 1])); 
-		}
-		else
-			_straggler = input[i];
-	}
-}
+
+// void PmergeMe::makePairs(std::vector<int> const &input)
+// {
+// 	for (size_t i = 0; i < input.size(); i += 2)
+// 	{
+// 		if (i + 1 < input.size())
+// 		{
+// 			// Compare the two values and create a pair with the larger value first and store in the pq
+// 			_data.push(std::make_pair(input[i] < input[i + 1] ? input[i + 1] : input[i],
+// 				input[i] < input[i + 1] ? input[i] : input[i + 1])); 
+// 		}
+// 		else
+// 			_straggler = input[i];
+// 	}
+// }
 
 void PmergeMe::mergePairs()
 {

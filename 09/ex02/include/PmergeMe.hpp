@@ -6,9 +6,11 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:30 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 21:11:04 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:30:27 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <utility>
 #include <vector>
@@ -16,7 +18,11 @@
 #include <iostream>
 #include <algorithm>
 
-void printVector(std::vector<int> const &input, std::string const &prefix);
+
+template <typename C>
+void printVector(C const &input, std::string const &prefix);
+
+
 class PmergeMe
 {
 public:
@@ -24,9 +30,11 @@ public:
 	PmergeMe(PmergeMe const &src);
 	~PmergeMe();
 	PmergeMe &operator=(PmergeMe const &rhs);
-	void sort(std::vector<int> const &input);
+	template <typename C>
+	void sort(C const &input);
 private:
-	void makePairs(std::vector<int> const &input);
+	template <typename C>
+	void makePairs(C const &input);
 	void mergePairs();
 	std::vector<int> buildJacobInsertionSequence(int size);
 	int jacobsthal(int n);
@@ -36,3 +44,5 @@ private:
 	std::vector<int> _sorted;
 	int _straggler;
 };
+
+#include "../src/PmergeMe.tpp"
