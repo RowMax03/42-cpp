@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/13 17:11:01 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:15:33 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,18 @@ void PmergeMe::mergePairs()
 	// Build the Jacobsthal insertion sequence
 	std::vector<int> jacobSeq = buildJacobInsertionSequence(pend.size());
 
-	// Insert the remaining elements of pend into _sorted according to the Jacobsthal sequence
+	// Insert the remaining elements of pend into _sorted using the Jacobsthal sequence
 	size_t iterator = 0;
 	size_t jacobIndex = 0;
-	std::string last = "not-jacob";
+	bool last = false;
 	while (iterator < pend.size())
 	{
 		int insertPos;
-		if (!jacobSeq.empty() && last != "jacob")
+		if (!jacobSeq.empty() && last != true)
 		{
 			insertPos = jacobSeq[0];
 			jacobSeq.erase(jacobSeq.begin());
-			last = "jacob";
+			last = true;
 		}
 		else
 		{
@@ -95,7 +95,7 @@ void PmergeMe::mergePairs()
 				iterator++;
 			}
 			insertPos = iterator;
-			last = "not-jacob";
+			last = false;
 		}
 
 		int item = pend[insertPos];
