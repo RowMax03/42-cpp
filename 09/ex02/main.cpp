@@ -6,16 +6,28 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:33 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/13 16:18:46 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:08:52 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int main()
+#include <sstream>
+
+int main(int argc, char **argv)
 {
-	int arr[] = {10, 2, 8, 6, 1, 9, 5, 3, 7, 4};
-	std::vector<int> input(arr, arr + sizeof(arr) / sizeof(arr[0]));
+	std::vector<int> input;
+	for (int i = 1; i < argc; ++i) {
+		std::stringstream ss(argv[i]);
+		int x;
+		if (ss >> x) {
+			input.push_back(x);
+		} else {
+			std::cerr << "Invalid argument: " << argv[i] << std::endl;
+			return 1;
+		}
+	}
+
 	PmergeMe pmm;
 	pmm.sort(input);
 	return 0;
