@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:46:52 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 15:26:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:59:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static bool isAllDigit(const std::string &str)
 static void printResults(char c, long i, float f, double d)
 {
 	std::cout << "char: ";
-	if (std::isprint(c))
-		std::cout << "'" << c << "'" << std::endl;
-	else if (i > CHAR_MAX || i < CHAR_MIN)
+	if (i > CHAR_MAX || i < CHAR_MIN)
 		std::cout << "impossible" << std::endl;
+	else if (std::isprint(c))
+		std::cout << "'" << c << "'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 	std::cout << "int: ";
