@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:33 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/17 15:22:05 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:27:06 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <sstream>
 #include <deque>
+#include <ctime>
 
 // void printVector(std::vector<int> const &input, std::string const &prefix)
 // {
@@ -46,6 +47,10 @@ int main(int argc, char **argv)
 	}
 	printVector(input, "Before: ");
 	PmergeMe pmm;
+	std::clock_t start = std::clock();
 	pmm.sort(input);
+	std::clock_t end = std::clock();
+	double elapsed = double(end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "Time to process a range of " << input.size() << " elements: " << elapsed << "µs" << std::endl;
 	return 0;
 }
