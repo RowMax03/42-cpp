@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:33 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 22:27:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:22:05 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 int main(int argc, char **argv)
 {
 	std::deque<int> input;
+	if (argc < 2) {
+		std::cerr << "Usage: " << argv[0] << " [integers...]" << std::endl;
+		return 1;
+	}
 	for (int i = 1; i < argc; ++i) {
 		std::stringstream ss(argv[i]);
 		int x;
