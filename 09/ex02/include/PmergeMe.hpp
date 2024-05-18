@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:30 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/18 16:31:56 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:53:23 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 
 template <typename C>
-void printVector(C const &input, std::string const &prefix);
+void printContainer(C const &input, std::string const &prefix);
 
 template <typename C>
 class PmergeMe

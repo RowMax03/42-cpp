@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:24:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/18 16:32:07 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:36:32 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int PmergeMe<C>::binarySearch(C& arr, int target)
 	return left;
 }
 template <typename C>
-void printVector(C const &input, std::string const &prefix)
+void printContainer(C const &input, std::string const &prefix)
 {
 	std::cout << prefix;
 	for (size_t i = 0; i < input.size(); ++i) {
