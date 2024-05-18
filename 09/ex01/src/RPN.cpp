@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:32:09 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/12 17:01:28 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:45:31 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int RPN::calculate(const std::string &str)
 	return 0;
 }
 
+
 int RPN::parse(const std::string &str)
 {
 	std::istringstream iss(str);
@@ -50,7 +51,9 @@ int RPN::parse(const std::string &str)
 	{
 		if (std::isdigit(token[0]))
 		{
-			int to_stack = std::stoi(token);
+			std::istringstream issToken(token);
+			int to_stack;
+			issToken >> to_stack;
 			if (to_stack >= 0 && to_stack <= 9) 
 				_stack.push(to_stack);
 			else
@@ -66,7 +69,6 @@ int RPN::parse(const std::string &str)
 	}
 	return 0;
 }
-
 int RPN::performe_operation(char &operant)
 {
 	if (_stack.empty())
