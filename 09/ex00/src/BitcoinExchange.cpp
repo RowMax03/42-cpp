@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:54 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/18 17:28:49 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:42:57 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ int BitcoinExchange::readAndValidateData()
 			return printError(ERR_INVALID_DATE);
 		if (!validExchangRate(value))
 			return printError(ERR_INVALID_EXCHANGE_RATE);
-		_data[date] = std::stod(value);
+		std::istringstream iss(value);
+		double d;
+		iss >> d;
+		_data[date] = d;
 	}
 	file.close();
 	return 0;
@@ -84,7 +87,10 @@ void BitcoinExchange::getBalanceForInput(std::ifstream &file)
 		if (line.length() >= 14 && line[11] == '|')
 		{
 			std::string value = line.substr(13);
-			f_value = std::stof(value);
+			std::istringstream iss(value);
+			iss >> f_value;
+			if (iss.fail())
+				valid = false;
 		}
 		else
 			valid = false;
@@ -106,9 +112,11 @@ bool BitcoinExchange::validDate(std::string date)
 		if (date[i] < '0' || date[i] > '9')
 			return false;
 	}
-	int year = std::stoi(date.substr(0, 4));
-	int month = std::stoi(date.substr(5, 2));
-	int day = std::stoi(date.substr(8, 2));
+	std::istringstream issYear(date.substr(0, 4));
+	std::istringstream issMonth(date.substr(5, 2));
+	std::istringstream issDay(date.substr(8, 2));
+	int year, month, day;
+	issYear >> year; issMonth >> month; issDay >> day;
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
 		return false;
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
@@ -130,11 +138,13 @@ bool BitcoinExchange::validDate(std::string date)
 }
 
 bool BitcoinExchange::validExchangRate(std::string& str) {
-	try {
-		std::stof(str);
-		return true;
-	} catch (const std::invalid_argument& e) {
+	std::istringstream iss(str);
+	float f;
+	iss >> f;
+	if (iss.fail()) {
 		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -163,5 +173,4 @@ void BitcoinExchange::displayBalance(std::string date, float &value, bool valid)
 		printError(ERR_NEG_VAL);
 	else
 		std::cout << date << " => " << value << " = "<< std::setprecision(10) << balance * value << std::setprecision(7) << std::endl;
-	// std::cout << "balance: " << balance << "value: "  << value <<std::endl;
 }

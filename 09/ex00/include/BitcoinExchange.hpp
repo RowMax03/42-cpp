@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/18 17:24:43 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:43:03 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <fstream>
 #include <map>
 #include <cmath>
+#include <sstream>
+#include <iomanip>
 
 #define ERR_USAGE "Error: Usage: ./btc <input.txt>"
 #define ERR_FILE "Error: Could not open file"
