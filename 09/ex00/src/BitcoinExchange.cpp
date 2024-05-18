@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:54 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/12 00:01:29 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:28:49 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int BitcoinExchange::readAndValidateData()
 			return printError(ERR_INVALID_DATE);
 		if (!validExchangRate(value))
 			return printError(ERR_INVALID_EXCHANGE_RATE);
-		_data[date] = std::stof(value);
+		_data[date] = std::stod(value);
 	}
 	file.close();
 	return 0;
@@ -88,33 +88,44 @@ void BitcoinExchange::getBalanceForInput(std::ifstream &file)
 		}
 		else
 			valid = false;
+		valid = valid && validDate(date);
 		displayBalance(date, f_value, valid);
 	}
 }
 
 bool BitcoinExchange::validDate(std::string date)
 {
-	// std::cout << date << std::endl;
 	if (date.length() != 10)
 		return false;
 	if (date[4] != '-' || date[7] != '-')
 		return false;
-	if (date[0] < '0' || date[0] > '9')
+	for (size_t i = 0; i < date.length(); i++)
+	{
+		if (i == 4 || i == 7)
+			continue;
+		if (date[i] < '0' || date[i] > '9')
+			return false;
+	}
+	int year = std::stoi(date.substr(0, 4));
+	int month = std::stoi(date.substr(5, 2));
+	int day = std::stoi(date.substr(8, 2));
+	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
 		return false;
-	if (date[1] < '0' || date[1] > '9')
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 		return false;
-	if (date[2] < '0' || date[2] > '9')
-		return false;
-	if (date[3] < '0' || date[3] > '9')
-		return false;
-	if (date[5] < '0' || date[5] > '9')
-		return false;
-	if (date[6] < '0' || date[6] > '9')
-		return false;
-	if (date[8] < '0' || date[8] > '9')
-		return false;
-	if (date[9] < '0' || date[9] > '9')
-		return false;
+	if (month == 2)
+	{
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+		{
+			if (day > 29)
+				return false;
+		}
+		else
+		{
+			if (day > 28)
+				return false;
+		}
+	}
 	return true;
 }
 
@@ -127,12 +138,12 @@ bool BitcoinExchange::validExchangRate(std::string& str) {
 	}
 }
 
-float BitcoinExchange::getBalance(std::string date)
+double BitcoinExchange::getBalance(std::string date)
 {
 	if (_data.find(date) != _data.end())
 		return _data[date];
 
-	std::map<std::string, float>::iterator it = _data.upper_bound(date);
+	std::map<std::string, double>::iterator it = _data.upper_bound(date);
 	if (it != _data.begin())
 	{
 		it--;
@@ -143,7 +154,7 @@ float BitcoinExchange::getBalance(std::string date)
 
 void BitcoinExchange::displayBalance(std::string date, float &value, bool valid)
 {
-	float balance = getBalance(date);
+	double balance = getBalance(date);
 	if (!valid || !validDate(date))
 		printError("Error: bad input => " + date);
 	else if (value > 1000)
@@ -151,5 +162,6 @@ void BitcoinExchange::displayBalance(std::string date, float &value, bool valid)
 	else if (value < 0)
 		printError(ERR_NEG_VAL);
 	else
-		std::cout << date << " => " << value << " = " << balance * value << std::endl;
+		std::cout << date << " => " << value << " = "<< std::setprecision(10) << balance * value << std::setprecision(7) << std::endl;
+	// std::cout << "balance: " << balance << "value: "  << value <<std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:30:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/11 23:57:05 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:24:43 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ public:
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 	int getBalanceOverTime(std::ifstream &file);
 private:
-	std::map<std::string, float> _data;
+	std::map<std::string, double> _data;
 	int readAndValidateData();
 	bool validDate(std::string date);
 	bool validExchangRate(std::string& str);
-	float getBalance(std::string date);
+	double getBalance(std::string date);
 	void displayBalance(std::string date, float &value, bool valid);
 	void getBalanceForInput(std::ifstream &file);
 };
