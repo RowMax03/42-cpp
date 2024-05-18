@@ -3,7 +3,7 @@ OBJS = $(SRCS:.cpp=.o)
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -I include
 
-SRC_FILES = PmergeMe.cpp
+SRC_FILES = # PmergeMe.cpp
 SRCS = $(addprefix src/, $(SRC_FILES)) main.cpp
 
 INCLUDE_FILES = PmergeMe.hpp

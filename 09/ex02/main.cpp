@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:33 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/17 22:27:06 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:32:42 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 
 int main(int argc, char **argv)
 {
-	std::deque<int> input;
+	std::vector<int> inputVec;
+	std::deque<int> inputDeque;
 	if (argc < 2) {
 		std::cerr << "Usage: " << argv[0] << " [integers...]" << std::endl;
 		return 1;
@@ -39,18 +40,26 @@ int main(int argc, char **argv)
 		std::stringstream ss(argv[i]);
 		int x;
 		if (ss >> x) {
-			input.push_back(x);
+			inputVec.push_back(x);
+			inputDeque.push_back(x);
 		} else {
 			std::cerr << "Invalid argument: " << argv[i] << std::endl;
 			return 1;
 		}
 	}
-	printVector(input, "Before: ");
-	PmergeMe pmm;
+	printVector(inputVec, "Before: ");
+	PmergeMe<std::vector<int> > pmmVec;
 	std::clock_t start = std::clock();
-	pmm.sort(input);
+	pmmVec.sort(inputVec);
 	std::clock_t end = std::clock();
 	double elapsed = double(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "Time to process a range of " << input.size() << " elements: " << elapsed << "µs" << std::endl;
+	printVector(pmmVec.getSorted(), "After: ");
+	std::cout << "Time to process a range of " << inputVec.size() << " elements with std::vector: " << elapsed << "µs" << std::endl;
+	PmergeMe<std::deque<int> > pmmDeque;
+	start = std::clock();
+	pmmDeque.sort(inputDeque);
+	end = std::clock();
+	elapsed = double(end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "Time to process a range of " << inputDeque.size() << " elements with std::deque: " << elapsed << "µs" << std::endl;
 	return 0;
 }

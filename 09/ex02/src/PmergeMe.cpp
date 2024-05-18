@@ -6,26 +6,29 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:54:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2024/05/14 22:28:02 by mreidenb         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:25:13 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-
-PmergeMe::PmergeMe() : _data()
+template <typename C>
+PmergeMe<C>::PmergeMe() : _data()
 {
 	_straggler = -1;
 }
-PmergeMe::PmergeMe(PmergeMe const &src) : _data(src._data)
+template <typename C>
+PmergeMe<C>::PmergeMe(PmergeMe const &src) : _data(src._data)
 {
 }
 
-PmergeMe::~PmergeMe()
+template <typename C>
+PmergeMe<C>::~PmergeMe()
 {
 }
 
-PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
+template <typename C>
+PmergeMe<C> &PmergeMe<C>::operator=(PmergeMe const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -34,27 +37,10 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
 	return *this;
 }
 
-
-
-
-// void PmergeMe::makePairs(std::vector<int> const &input)
-// {
-// 	for (size_t i = 0; i < input.size(); i += 2)
-// 	{
-// 		if (i + 1 < input.size())
-// 		{
-// 			// Compare the two values and create a pair with the larger value first and store in the pq
-// 			_data.push(std::make_pair(input[i] < input[i + 1] ? input[i + 1] : input[i],
-// 				input[i] < input[i + 1] ? input[i] : input[i + 1])); 
-// 		}
-// 		else
-// 			_straggler = input[i];
-// 	}
-// }
-
-void PmergeMe::mergePairs()
+template <typename C>
+void PmergeMe<C>::mergePairs()
 {
-	std::vector<int> pend;
+	C pend;
 	while (!_data.empty())
 	{
 		std::pair<int, int> smallestPair = _data.top();
@@ -108,9 +94,10 @@ void PmergeMe::mergePairs()
 	printVector(_sorted, "After: ");
 }
 
-std::vector<int> PmergeMe::buildJacobInsertionSequence(int arrayLen)
+template <typename C>
+C PmergeMe<C>::buildJacobInsertionSequence(int arrayLen)
 {
-	std::vector<int> endSequence;
+	C endSequence;
 	int jacobIndex = 3; // The first one that matters
 
 	// Loop through and create the sequence
@@ -123,7 +110,8 @@ std::vector<int> PmergeMe::buildJacobInsertionSequence(int arrayLen)
 	return endSequence;
 }
 
-int PmergeMe::jacobsthal(int n)
+template <typename C>
+int PmergeMe<C>::jacobsthal(int n)
 {
 	if (n == 0)
 		return 0;
@@ -133,7 +121,8 @@ int PmergeMe::jacobsthal(int n)
 		return 2 * jacobsthal(n - 1) + jacobsthal(n - 2);
 }
 
-int PmergeMe::binarySearch(std::vector<int>& arr, int target)
+template <typename C>
+int PmergeMe<C>::binarySearch(std::vector<int>& arr, int target)
 {
 	int left = 0;
 	int right = arr.size() - 1;
